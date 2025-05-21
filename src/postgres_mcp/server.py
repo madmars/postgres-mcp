@@ -327,6 +327,20 @@ Examples: [
 ]
 If there is no hypothetical index, you can pass an empty list.""",
         default=[],
+        json_schema_extra={
+            "items": {
+                "type": "object",
+                "properties": {
+                    "table": {"type": "string"},
+                    "columns": {
+                        "type": "array",
+                        "items": {"type": "string"}
+                    },
+                    "using": {"type": "string"}
+                },
+                "required": ["table", "columns"]
+            }
+        },
     ),
 ) -> ResponseType:
     """
